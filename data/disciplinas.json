@@ -1,0 +1,247 @@
+[
+  {
+    "nome": "Lógica Matemática",
+    "periodo": 1,
+    "carga_horaria": 4
+  },
+  {
+    "nome": "Fundamentos de Programação",
+    "periodo": 1,
+    "carga_horaria": 4
+  },
+  {
+    "nome": "Introdução à Ciência da Computação",
+    "periodo": 1,
+    "carga_horaria": 2
+  },
+  {
+    "nome": "Fundamentos de Eletricidade",
+    "periodo": 1,
+    "carga_horaria": 2
+  },
+  {
+    "nome": "Cálculo 1",
+    "periodo": 1,
+    "carga_horaria": 6
+  },
+  {
+    "nome": "Comunicação Linguística",
+    "periodo": 1,
+    "carga_horaria": 2
+  },
+  {
+    "nome": "Física 2",
+    "periodo": 1,
+    "carga_horaria": 5
+  },
+  {
+    "nome": "Linguagem Estruturada",
+    "periodo": 2,
+    "carga_horaria": 3
+  },
+  {
+    "nome": "Circuitos Digitais",
+    "periodo": 2,
+    "carga_horaria": 6
+  },
+  {
+    "nome": "Geometria Analítica e Álgebra Linear",
+    "periodo": 2,
+    "carga_horaria": 6
+  },
+  {
+    "nome": "Cálculo 2",
+    "periodo": 2,
+    "carga_horaria": 4
+  },
+  {
+    "nome": "Metodologia da Pesquisa",
+    "periodo": 2,
+    "carga_horaria": 2
+  },
+  {
+    "nome": "Probabilidade e Estatística",
+    "periodo": 2,
+    "carga_horaria": 4
+  },
+  {
+    "nome": "Estrutura de Dados",
+    "periodo": 3,
+    "carga_horaria": 4
+  },
+  {
+    "nome": "Fundamentos de Banco de Dados",
+    "periodo": 3,
+    "carga_horaria": 4
+  },
+  {
+    "nome": "Linguagem de Estruturação e Apresentação de Conteúdos",
+    "periodo": 3,
+    "carga_horaria": 3
+  },
+  {
+    "nome": "Arquitetura de Computadores",
+    "periodo": 3,
+    "carga_horaria": 4
+  },
+  {
+    "nome": "Programação Orientada a Objetos",
+    "periodo": 3,
+    "carga_horaria": 4
+  },
+  {
+    "nome": "Cálculo Numérico",
+    "periodo": 3,
+    "carga_horaria": 4
+  },
+  {
+    "nome": "Pesquisa Operacional 1",
+    "periodo": 4,
+    "carga_horaria": 4
+  },
+  {
+    "nome": "Sistemas Gerenciadores de Banco de Dados",
+    "periodo": 4,
+    "carga_horaria": 4
+  },
+  {
+    "nome": "Pesquisa e Ordenação de Dados",
+    "periodo": 4,
+    "carga_horaria": 3
+  },
+  {
+    "nome": "Engenharia de Requisitos",
+    "periodo": 4,
+    "carga_horaria": 3
+  },
+  {
+    "nome": "Linguagem de Montagem",
+    "periodo": 4,
+    "carga_horaria": 3
+  },
+  {
+    "nome": "Comunicação de Dados",
+    "periodo": 4,
+    "carga_horaria": 4
+  },
+  {
+    "nome": "Linguagens Formais e Autômatos",
+    "periodo": 5,
+    "carga_horaria": 4
+  },
+  {
+    "nome": "Computação Gráfica",
+    "periodo": 5,
+    "carga_horaria": 4
+  },
+  {
+    "nome": "Paradigmas de Linguagens de Programação",
+    "periodo": 5,
+    "carga_horaria": 3
+  },
+  {
+    "nome": "Engenharia de Software 1",
+    "periodo": 5,
+    "carga_horaria": 3
+  },
+  {
+    "nome": "Sistemas Operacionais",
+    "periodo": 5,
+    "carga_horaria": 4
+  },
+  {
+    "nome": "Redes de Computadores 1",
+    "periodo": 5,
+    "carga_horaria": 4
+  },
+  {
+    "nome": "Arquitetura Avançada de Hardware",
+    "periodo": 5,
+    "carga_horaria": 3
+  },
+  {
+    "nome": "Fundamentos de Sistemas Inteligentes",
+    "periodo": 6,
+    "carga_horaria": 3
+  },
+  {
+    "nome": "Interação Humano-Computador",
+    "periodo": 6,
+    "carga_horaria": 4
+  },
+  {
+    "nome": "Engenharia de Software 2",
+    "periodo": 6,
+    "carga_horaria": 3
+  },
+  {
+    "nome": "Tecnologia de Desenvolvimento de Sistemas",
+    "periodo": 6,
+    "carga_horaria": 4
+  },
+  {
+    "nome": "Aspectos Formais da Computação",
+    "periodo": 6,
+    "carga_horaria": 3
+  },
+  {
+    "nome": "Redes de Computadores 2",
+    "periodo": 6,
+    "carga_horaria": 4
+  },
+  {
+    "nome": "Laboratório de Sistemas Operacionais",
+    "periodo": 6,
+    "carga_horaria": 4
+  },
+  {
+    "nome": "Sistemas Inteligentes Aplicados",
+    "periodo": 7,
+    "carga_horaria": 4
+  },
+  {
+    "nome": "Construção de Compiladores",
+    "periodo": 7,
+    "carga_horaria": 4
+  },
+  {
+    "nome": "Trabalho de Conclusão de Curso 1",
+    "periodo": 7,
+    "carga_horaria": 4
+  },
+  {
+    "nome": "Segurança em Redes de Computadores",
+    "periodo": 7,
+    "carga_horaria": 3
+  },
+  {
+    "nome": "Sistemas Distribuídos",
+    "periodo": 7,
+    "carga_horaria": 4
+  },
+  {
+    "nome": "Empreendedorismo",
+    "periodo": 7,
+    "carga_horaria": 2
+  },
+  {
+    "nome": "Trabalho de Conclusão de Curso 2",
+    "periodo": 8,
+    "carga_horaria": 4
+  },
+  {
+    "nome": "Gerenciamento de Projetos",
+    "periodo": 8,
+    "carga_horaria": 3
+  },
+  {
+    "nome": "Gestão da Inovação e Tecnologia",
+    "periodo": 8,
+    "carga_horaria": 2
+  },
+  {
+    "nome": "Tópicos Avançados em Computação",
+    "periodo": 8,
+    "carga_horaria": 5
+  }
+]
