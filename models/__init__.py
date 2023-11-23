@@ -4,4 +4,5 @@ from . import disciplina
 from . import professor
 from . import horario
 from . import dia_da_semana
+from . import aula
 from . import grade

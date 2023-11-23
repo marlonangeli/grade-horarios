@@ -1,14 +1,36 @@
 from . import dataclass, field
+from .aula import Aula
 from .dia_da_semana import DiaDaSemana
-from .disciplina import Disciplina
 from .horario import Horario
-from .professor import Professor
 
 
 @dataclass
 class Grade:
     id: int
-    disciplina: Disciplina
-    professor: Professor
-    dia_semana: list[DiaDaSemana] = field(default_factory=list)
-    horario: list[Horario] = field(default_factory=list)
+    aulas: list[Aula] = field(default_factory=list)
+
+    @property
+    def horarios_disponiveis(self):
+        # Todos os horários disponíveis a partir das classes Horario e DiaDaSemana
+        todos_horarios = [
+            (dia, horario)
+            for dia in DiaDaSemana
+            for horario in Horario.HORARIO_AULAS.keys()
+        ]
+
+        # Horários disponíveis são todos os horários menos os horários ocupados
+        horarios_ocupados = [
+            (aula.horarios[0][0], horario)
+            for aula in self.aulas
+            for horario in aula.horarios[0][1]
+        ]
+
+        horarios_disponiveis = list(set(todos_horarios) - set(horarios_ocupados))
+        horarios_disponiveis.sort(key=lambda x: (x[0].value, x[1].value))
+        return horarios_disponiveis
+
+    def adicionar_aula(self, aula: Aula):
+        self.aulas.append(aula)
+
+    def remover_aula(self, aula: Aula):
+        self.aulas.remove(aula)

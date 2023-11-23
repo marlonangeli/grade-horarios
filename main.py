@@ -1,6 +1,7 @@
 import os
 
 from utils.arquivo import ler_arquivo_json
+from algorithms.elitismo import elitismo
 
 def main():
     caminho = os.path.dirname(os.path.abspath(__file__)) + "/data/"
@@ -9,6 +10,8 @@ def main():
 
     print(disciplinas)
     print(professores)
+
+    individuo = elitismo(disciplinas, professores)
 
 
 if __name__ == "__main__":
