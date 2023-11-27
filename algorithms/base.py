@@ -56,6 +56,7 @@ class AlgoritmoGenetico:
         stats.register("std", np.std)
         stats.register("min", np.min)
         stats.register("max", np.max)
+        stats.register("size", len)
 
         return stats
 

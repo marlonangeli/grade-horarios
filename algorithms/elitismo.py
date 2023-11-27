@@ -44,7 +44,7 @@ class Elitismo(AlgoritmoGenetico):
             'melhor_individuo': self._melhor_individuo,
             'melhor_fitness': self._melhor_fitness,
             'tempo': self._tempo,
-            'logbook': self._logbook
+            'estatisticas': self._logbook
         }
 
     def _crossover_aulas(self, ind1, ind2):
@@ -133,22 +133,23 @@ class Elitismo(AlgoritmoGenetico):
         self.toolbox.register("evaluate", self._avaliacao)
         self.toolbox.register("mate", self._crossover_aulas)
         self.toolbox.register("mutate", self._mutacao_aulas, indpb=self._taxa_mutacao)
-        self.toolbox.register("select", tools.selTournament, tournsize=5)
+        # self.toolbox.register("select", tools.selTournament, tournsize=10)
+        self.toolbox.register("select", tools.selDoubleTournament, fitness_size=10, parsimony_size=1.2, fitness_first=True)
 
     def _criar_algoritmo_genetico(self, populacao, stats, logbook):
-        # return algorithms.eaSimple(populacao, self.toolbox, cxpb=self._taxa_crossover, mutpb=self._taxa_mutacao,
-        #                            ngen=self._numero_geracoes, stats=stats, halloffame=tools.HallOfFame(1),
-        #                            verbose=True)
+        return algorithms.eaSimple(populacao, self.toolbox, cxpb=self._taxa_crossover, mutpb=self._taxa_mutacao,
+                                   ngen=self._numero_geracoes, stats=stats, halloffame=tools.HallOfFame(5),
+                                   verbose=True)
 
         # return algorithms.eaMuPlusLambda(populacao, self.toolbox, mu=self._tamanho_populacao, lambda_=self._tamanho_populacao,
         #                                  cxpb=self._taxa_crossover, mutpb=self._taxa_mutacao,
-        #                                  ngen=self._numero_geracoes, stats=stats, halloffame=tools.HallOfFame(1),
+        #                                  ngen=self._numero_geracoes, stats=stats, halloffame=tools.HallOfFame(5),
         #                                  verbose=True)
 
-        return algorithms.eaMuCommaLambda(populacao, self.toolbox, mu=self._tamanho_populacao, lambda_=self._tamanho_populacao,
-                                          cxpb=self._taxa_crossover, mutpb=self._taxa_mutacao,
-                                          ngen=self._numero_geracoes, stats=stats, halloffame=tools.HallOfFame(1),
-                                          verbose=True)
+        # return algorithms.eaMuCommaLambda(populacao, self.toolbox, mu=self._tamanho_populacao, lambda_=self._tamanho_populacao,
+        #                                   cxpb=self._taxa_crossover, mutpb=self._taxa_mutacao,
+        #                                   ngen=self._numero_geracoes, stats=stats, halloffame=tools.HallOfFame(5),
+        #                                   verbose=True)
 
     def __professor_nao_da_aula_em_dois_lugares_ao_mesmo_tempo(self, individuo):
         # 1. Um professor não pode dar aula em dois lugares ao mesmo tempo
