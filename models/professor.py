@@ -10,3 +10,9 @@ class Professor:
     @property
     def carga_horaria(self):
         return sum(disciplina.carga_horaria for disciplina in self.disciplinas)
+
+    def __hash__(self):
+        return hash(self.nome)
+
+    def __eq__(self, other):
+        return self.nome == other.nome

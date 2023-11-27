@@ -5,26 +5,40 @@ from . import Disciplina, Professor, DiaDaSemana, Horario, Aula, Grade
 
 
 class AlgoritmoGenetico:
-    def __init__(self, disciplinas: list[Disciplina], professores: list[Professor]):
-        self._tamanho_populacao = None
-        self._numero_geracoes = None
-        self._taxa_crossover = None
-        self._taxa_mutacao = None
-
+    def __init__(self, disciplinas: list[Disciplina], professores: list[Professor], tamanho_populacao: int,
+                 numero_geracoes: int, taxa_crossover: float, taxa_mutacao: float):
         self.disciplinas = disciplinas
         self.professores = professores
+        self._tamanho_populacao = tamanho_populacao
+        self._numero_geracoes = numero_geracoes
+        self._taxa_crossover = taxa_crossover
+        self._taxa_mutacao = taxa_mutacao
         self.toolbox = base.Toolbox()
 
         self._criar_estruturas()
-        self._criar_operacoes_geneticas()
+        self._criar_estatisticas()
 
     def _criar_individuo(self):
-        self.toolbox.register("attr_disciplina", random.randint, 0, len(self.disciplinas) - 1)
-        self.toolbox.register("attr_professor", random.randint, 0, len(self.professores) - 1)
+        grade = Grade()
+        horarios_disponiveis = grade.horarios_disponiveis
+        while horarios_disponiveis:
+            horario = random.choice(horarios_disponiveis)
 
-        self.toolbox.register("individual", tools.initCycle, creator.Individual,
-                              (self.toolbox.attr_disciplina, self.toolbox.attr_professor), n=1)
-        return self.toolbox.individual()
+            disciplina = random.choice(self.disciplinas)
+            professores = [professor for professor in self.professores if disciplina in professor.disciplinas]
+
+            if not professores:
+                continue
+
+            professor = random.choice(professores)
+            aula = Aula(len(grade.aulas), disciplina, professor, horario)
+            grade.adicionar_aula(aula)
+
+            horarios_disponiveis.remove(horario)
+
+        self.toolbox.register("individual", tools.initIterate, creator.Individual, grade.aulas)
+        # return self.toolbox.individual()
+        return creator.Individual(grade.aulas)
 
     def _criar_populacao(self):
         self.toolbox.register("population", tools.initRepeat, list, self._criar_individuo)
@@ -36,15 +50,6 @@ class AlgoritmoGenetico:
 
         self._criar_populacao()
 
-    def _criar_operacoes_geneticas(self):
-        self.toolbox.register("evaluate", self._avaliacao)
-        self.toolbox.register("mate", tools.cxOnePoint)
-        self.toolbox.register("mutate", tools.mutUniformInt, low=0, up=len(self.disciplinas) - 1, indpb=0.05)
-        self.toolbox.register("select", tools.selTournament, tournsize=3)
-
-    def _avaliacao(self, individuo):
-        return random.randint(0, 100),
-
     def _criar_estatisticas(self):
         stats = tools.Statistics(key=lambda ind: ind.fitness.values)
         stats.register("avg", np.mean)
@@ -55,16 +60,9 @@ class AlgoritmoGenetico:
         return stats
 
     def _criar_logbook(self, stats):
-        return tools.Logbook()
+        logbook = tools.Logbook()
+        logbook.header = ["gen", "evals"] + stats.fields
+        logbook.chapters["fitness"].header = "min", "avg", "max"
+        logbook.chapters["size"].header = "min", "avg", "max"
 
-    def _criar_algoritmo_genetico(self, populacao, stats, logbook):
-        return algorithms.eaSimple(populacao, self.toolbox, cxpb=self._taxa_crossover, mutpb=self._taxa_mutacao,
-                                   ngen=self._numero_geracoes, stats=stats, verbose=True)
-
-    def _criar_grade(self, individuo):
-        grade = Grade()
-        for i in range(len(individuo)):
-            disciplina = self.disciplinas[individuo[i][0]]
-            professor = self.professores[individuo[i][1]]
-            grade.adicionar_aula(Aula(i, disciplina, professor))
-        return grade
+        return logbook

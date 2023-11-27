@@ -10,4 +10,4 @@ class Aula:
     id: int
     disciplina: Disciplina
     professor: Professor
-    horarios: list[tuple[DiaDaSemana, list[Horario]]] = field(default_factory=list)
+    horarios: list[tuple[DiaDaSemana, list[str]]] = field(default_factory=list)

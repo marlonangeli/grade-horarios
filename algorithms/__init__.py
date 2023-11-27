@@ -1,5 +1,6 @@
 import deap
 import numpy
+import pandas
 import random
 import time
 import copy
@@ -11,3 +12,4 @@ from models.horario import Horario
 from models.aula import Aula
 from models.dia_da_semana import DiaDaSemana
 from models.grade import Grade
+from .base import AlgoritmoGenetico

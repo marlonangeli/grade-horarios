@@ -1,6 +1,6 @@
 from models.disciplina import Disciplina
 from models.professor import Professor
-from utils.arquivo import escrever_arquivo_json
+from utils.arquivo import salvar_em_pickle
 import os
 
 
@@ -8,21 +8,21 @@ def gerar_entidades():
     # Disciplinas
 
     # 1º Período
-    logica_matematica = Disciplina("Lógica Matemática", 1, 4)
-    fundamentos_programacao = Disciplina("Fundamentos de Programação", 1, 4)
+    logica_matematica = Disciplina("Lógica Matemática", 1, 3)
+    fundamentos_programacao = Disciplina("Fundamentos de Programação", 1, 3)
     introducao_cc = Disciplina("Introdução à Ciência da Computação", 1, 2)
     fundamentos_eletricidade = Disciplina("Fundamentos de Eletricidade", 1, 2)
-    calculo1 = Disciplina("Cálculo 1", 1, 6)
+    calculo1 = Disciplina("Cálculo 1", 1, 5)
     comunicacao = Disciplina("Comunicação Linguística", 1, 2)
     fisica2 = Disciplina("Física 2", 1, 5)
 
     # 2º Período
     linguagem_estruturada = Disciplina("Linguagem Estruturada", 2, 3)
     circuitos_digitais = Disciplina("Circuitos Digitais", 2, 6)
-    algebra_linear = Disciplina("Geometria Analítica e Álgebra Linear", 2, 6)
+    algebra_linear = Disciplina("Geometria Analítica e Álgebra Linear", 2, 5)
     calculo2 = Disciplina("Cálculo 2", 2, 4)
     metodologia = Disciplina("Metodologia da Pesquisa", 2, 2)
-    probabilidade_estatistica = Disciplina("Probabilidade e Estatística", 2, 4)
+    probabilidade_estatistica = Disciplina("Probabilidade e Estatística", 2, 3)
 
     # 3º Período
     estrutura_dados = Disciplina("Estrutura de Dados", 3, 4)
@@ -34,7 +34,7 @@ def gerar_entidades():
 
     # 4º Período
     po1 = Disciplina("Pesquisa Operacional 1", 4, 4)
-    sgbd = Disciplina("Sistemas Gerenciadores de Banco de Dados", 4, 4)
+    sgbd = Disciplina("Sistemas Gerenciadores de Banco de Dados", 4, 3)
     pesquisa_ord_dados = Disciplina("Pesquisa e Ordenação de Dados", 4, 3)
     eng_requisitos = Disciplina("Engenharia de Requisitos", 4, 3)
     ling_montagem = Disciplina("Linguagem de Montagem", 4, 3)
@@ -72,6 +72,11 @@ def gerar_entidades():
     gestao_inovacao = Disciplina("Gestão da Inovação e Tecnologia", 8, 2)
     topicos_avancados = Disciplina("Tópicos Avançados em Computação", 8, 5)
 
+
+    # Professores
+    agnaldo = Professor("Agnaldo", [lab_so, computacao_grafica])
+    alan = Professor("Alan", [eng_requisitos, gerencia_projeto, tcc2])
+    alessandra = Professor("Alessandra", [ihc, paradigmas, tcc1, tcc2])
     disciplinas = [
         logica_matematica,
         fundamentos_programacao,
@@ -85,49 +90,46 @@ def gerar_entidades():
         algebra_linear,
         calculo2,
         metodologia,
-        probabilidade_estatistica,
         estrutura_dados,
         fund_banco_de_dados,
         html,
-        arquitetura_computadores,
         poo,
-        calculo_numerico,
-        po1,
-        sgbd,
-        pesquisa_ord_dados,
-        eng_requisitos,
-        ling_montagem,
-        comunicacao_dados,
-        lfa,
-        computacao_grafica,
-        paradigmas,
-        eng_soft1,
-        so,
-        redes1,
-        arquitetura_avancada,
-        ia1,
-        ihc,
-        eng_soft2,
-        tds,
-        aspectos,
-        redes2,
-        lab_so,
-        ia2,
-        compiladores,
-        tcc1,
-        seg_redes,
-        sistemas_distribuidos,
-        empreeendedorismo,
-        tcc2,
-        gerencia_projeto,
-        gestao_inovacao,
-        topicos_avancados
-    ]
+        probabilidade_estatistica,
+        # arquitetura_computadores,
+        # calculo_numerico,
+        # po1,
+        # sgbd,
+        # pesquisa_ord_dados,
+        # eng_requisitos,
+        # ling_montagem,
+        # comunicacao_dados,
 
-    # Professores
-    agnaldo = Professor("Agnaldo", [lab_so, computacao_grafica])
-    alan = Professor("Alan", [eng_requisitos, gerencia_projeto, tcc2])
-    alessandra = Professor("Alessandra", [ihc, paradigmas, tcc1, tcc2])
+
+        # lfa,
+        # computacao_grafica,
+        # paradigmas,
+        # eng_soft1,
+        # so,
+        # redes1,
+        # arquitetura_avancada,
+        # ia1,
+        # ihc,
+        # eng_soft2,
+        # tds,
+        # aspectos,
+        # redes2,
+        # lab_so,
+        # ia2,
+        # compiladores,
+        # tcc1,
+        # seg_redes,
+        # sistemas_distribuidos,
+        # empreeendedorismo,
+        # tcc2,
+        # gerencia_projeto,
+        # gestao_inovacao,
+        # topicos_avancados
+    ]
     angonese = Professor("Cesar Angonese", [fundamentos_programacao, fund_banco_de_dados, sgbd])
     cesar_cardoso = Professor("Cesar Cardoso", [fundamentos_programacao])
     pessini = Professor("Evando Pessini", [estrutura_dados, lfa, aspectos])
@@ -181,8 +183,8 @@ def salvar_entidades(entidades):
 
     caminho = os.path.dirname(os.path.abspath(__file__)) + "/../data/"
 
-    escrever_arquivo_json(caminho + "disciplinas.json", disciplinas)
-    escrever_arquivo_json(caminho + "professores.json", professores)
+    salvar_em_pickle(disciplinas, caminho + "disciplinas.pickle")
+    salvar_em_pickle(professores, caminho + "professores.pickle")
 
 
 def main():
